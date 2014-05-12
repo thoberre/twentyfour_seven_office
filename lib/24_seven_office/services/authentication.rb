@@ -10,7 +10,7 @@ module TwentyFourSevenOffice
       operations :login
 
       def self.login(username, password, application_id)
-        super message: { 
+        message = {
           credential: {
             Type: "Community",
             Username: username,
@@ -18,6 +18,10 @@ module TwentyFourSevenOffice
             IdentityId: application_id
           }
         }
+        r = super message: message
+        r.body[:login_response][:login_result]
+      rescue Savon::SOAPFault => e
+        raise APIError.wrap(e, message)
       end
     end
   end
