@@ -7,7 +7,7 @@ module TwentyFourSevenOffice
 
       operations :login
 
-      Reqest = Struct.new(:username, :password, :application_id) do
+      Request = Struct.new(:username, :password, :application_id) do
         def to_s
           <<-XML
           <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://24sevenOffice.com/webservices">
