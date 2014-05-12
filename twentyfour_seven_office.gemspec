@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require '24_seven_office/version'
+require 'twentyfour_seven_office/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "24_seven_office"
-  spec.version       = TwentyFourSevenOffice::VERSION
+  spec.name          = "twentyfour_seven_office"
+  spec.version       = TwentyfourSevenOffice::VERSION
   spec.authors       = ["Peter Skeide"]
   spec.email         = ["ps@skalar.com"]
   spec.summary       = %q{A collection of client interfaces for various 24SevenOffice services used by Skalar}
-  spec.homepage      = "https://github.com/Skalar/24_seven_office"
+  spec.homepage      = "https://github.com/Skalar/twentyfour_seven_office"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

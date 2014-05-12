@@ -1,9 +1,9 @@
 require "savon"
 
-require "24_seven_office/version"
-require "24_seven_office/services/authentication"
+require "twentyfour_seven_office/version"
+require "twentyfour_seven_office/services/authentication"
 
-module TwentyFourSevenOffice
+module TwentyfourSevenOffice
   module Errors
     class BaseError < StandardError
       def initialize(msg = nil)

@@ -1,4 +1,4 @@
-module TwentyFourSevenOffice
+module TwentyfourSevenOffice
   module Services
     class Authentication
       extend Savon::Model
