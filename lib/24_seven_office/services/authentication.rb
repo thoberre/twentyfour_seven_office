@@ -10,11 +10,11 @@ module TwentyFourSevenOffice
       Request = Struct.new(:username, :password, :application_id) do
         def to_s
           <<-XML
-          <web:credential>
-            <web:ApplicationId>#{application_id}</web:ApplicationId>
-            <web:Password>#{password}</web:Password>
-            <web:Username>#{username}</web:Username>
-          </web:credential>
+          <tns:credential>
+            <tns:ApplicationId>#{application_id}</tns:ApplicationId>
+            <tns:Password>#{password}</tns:Password>
+            <tns:Username>#{username}</tns:Username>
+          </tns:credential>
           XML
         end
       end
