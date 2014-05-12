@@ -1,5 +1,5 @@
 require "24_seven_office/version"
 
-module 24SevenOffice
+module TwentyFourSevenOffice
   # Your code goes here...
 end

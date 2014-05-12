@@ -1,3 +1,3 @@
-module 24SevenOffice
+module TwentyFourSevenOffice
   VERSION = "0.0.1"
 end
