@@ -11,9 +11,10 @@ module TwentyFourSevenOffice
         def to_s
           <<-XML
           <tns:credential>
-            <tns:ApplicationId>#{application_id}</tns:ApplicationId>
-            <tns:Password>#{password}</tns:Password>
+            <tns:Type>Community</tns:Type>
             <tns:Username>#{username}</tns:Username>
+            <tns:Password>#{password}</tns:Password>
+            <tns:IdentityId>#{application_id}</tns:IdentityId>
           </tns:credential>
           XML
         end
