@@ -5,17 +5,17 @@ module TwentyFourSevenOffice
 
       client wsdl: "https://webservices.24sevenoffice.com/authenticate/authenticate.asmx?wsdl"
 
-      global :convert_request_keys_to, :camelcase
+      global :convert_request_keys_to, :none
 
       operations :login
 
       def self.login(username, password, application_id)
         super message: { 
           credential: {
-            type: "Community",
-            username: username,
-            password: password,
-            identity_id: application_id
+            Type: "Community",
+            Username: username,
+            Password: password,
+            IdentityId: application_id
           }
         }
       end
