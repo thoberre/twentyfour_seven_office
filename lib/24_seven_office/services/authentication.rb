@@ -10,18 +10,11 @@ module TwentyFourSevenOffice
       Request = Struct.new(:username, :password, :application_id) do
         def to_s
           <<-XML
-          <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://24sevenOffice.com/webservices">
-           <soapenv:Header/>
-           <soapenv:Body>
-              <web:Login>
-                 <web:credential>
-                    <web:ApplicationId>#{application_id}</web:ApplicationId>
-                    <web:Password>#{password}</web:Password>
-                    <web:Username>#{username}</web:Username>
-                 </web:credential>
-              </web:Login>
-           </soapenv:Body>
-          </soapenv:Envelope>
+          <web:credential>
+            <web:ApplicationId>#{application_id}</web:ApplicationId>
+            <web:Password>#{password}</web:Password>
+            <web:Username>#{username}</web:Username>
+          </web:credential>
           XML
         end
       end
