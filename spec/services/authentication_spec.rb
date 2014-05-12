@@ -26,10 +26,9 @@ describe TwentyfourSevenOffice::Services::Authentication do
   it "should login using a Community credential" do
     savon.expects(:login).with(message: {
       credential: {
-        Type: "Community",
-        Username: "test@example.com",
+        ApplicationId: "abcd1234",
         Password: "secret",
-        IdentityId: "abcd1234"
+        Username: "test@example.com"
       }
     }).returns(login_response)
 
