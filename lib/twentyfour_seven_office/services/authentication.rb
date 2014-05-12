@@ -18,7 +18,8 @@ module TwentyfourSevenOffice
           }
         }
         r = super message: message
-        r.body[:login_response][:login_result]
+        session_id = r.body[:login_response][:login_result]
+        TwentyfourSevenOffice::Models::SessionId.new(session_id: session_id)
       rescue Savon::SOAPFault => e
         raise APIError.wrap(e, message)
       end

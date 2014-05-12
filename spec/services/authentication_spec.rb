@@ -34,6 +34,6 @@ describe TwentyfourSevenOffice::Services::Authentication do
 
     session_id = subject.login("test@example.com", "secret", "abcd1234")
 
-    expect(session_id).to eq("csjilsasysb1h245qmwvsumx")
+    expect(session_id.session_id).to eq("csjilsasysb1h245qmwvsumx")
   end
 end
