@@ -3,12 +3,13 @@ module TwentyFourSevenOffice
     class Authentication
       extend Savon::Model
 
-      client wsdl: "https://api.24sevenoffice.com/authenticate/v001/authenticate.asmx?wsdl"
+      client wsdl: "https://webservices.24sevenoffice.com/authenticate/authenticate.asmx?wsdl"
 
       operations :login
 
-      def self.login(username, password, application_id)
-        res = super xml: %W{
+      Reqest = Struct.new(:username, :password, :application_id) do
+        def to_s
+          <<-XML
           <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://24sevenOffice.com/webservices">
            <soapenv:Header/>
            <soapenv:Body>
@@ -20,9 +21,15 @@ module TwentyFourSevenOffice
                  </web:credential>
               </web:Login>
            </soapenv:Body>
-        </soapenv:Envelope>
-        })
+          </soapenv:Envelope>
+          XML
+        end
       end
+
+      def self.login(username, password, application_id)
+        super Request.new(username, password, application_id)
+      end
+
     end
   end
 end
