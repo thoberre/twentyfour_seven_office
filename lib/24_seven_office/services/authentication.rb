@@ -27,7 +27,7 @@ module TwentyFourSevenOffice
       end
 
       def self.login(username, password, application_id)
-        super Request.new(username, password, application_id)
+        super message: Request.new(username, password, application_id)
       end
 
     end
