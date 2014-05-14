@@ -5,15 +5,15 @@ module TwentyfourSevenOffice
 
       global :convert_request_keys_to, :none
 
+      api_operation :login, input_data_type: Credential, output_data_type: SessionId
+      api_operation :has_session
+
       def self.login(credential)
-        new.api_operation({
-          input_data_type: Credential,
-          output_data_type: SessionId
-        }).call(credential)
+        new(nil).login(credential)
       end
 
       def self.has_session(session_id)
-        r = new.api_operation({ session_id: session_id, name: :has_session }).call
+        r = new(session_id).has_session
         r.body[:has_session_response][:has_session_result]
       end
 

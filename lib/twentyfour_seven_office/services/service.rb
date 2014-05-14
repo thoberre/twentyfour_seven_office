@@ -4,24 +4,15 @@ module TwentyfourSevenOffice
       extend Savon::Model
       include TwentyfourSevenOffice::DataTypes
 
-      def api_operation(opts)
-        opts = opts.merge({ client: client })
-
-        if opts[:name].nil?
-          opts[:name] = __resolve_caller(caller).to_sym
-        end
-
-        if defined? @session_id && opts[:session_id].nil?
-          opts[:session_id] = @session_id
-        end
-
-        ApiOperation.new(opts)
+      def initialize(session_id)
+        @session_id = session_id
       end
 
-      private
-
-      def __resolve_caller(callstack)
-        callstack[0][/`.*'/][1..-2]
+      def self.api_operation(name_sym, opts = {})
+        define_method name_sym do |input = nil|
+          opts = opts.merge({ client: client, name: name_sym, session_id: @session_id })
+          ApiOperation.new(opts).call(input)
+        end
       end
     end
   end

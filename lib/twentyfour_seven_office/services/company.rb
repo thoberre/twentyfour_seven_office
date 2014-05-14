@@ -5,13 +5,7 @@ module TwentyfourSevenOffice
 
       global :convert_request_keys_to, :none
 
-      def initialize(session_id)
-        @session_id = session_id
-      end
-
-      def get_companies(search_params)
-        api_operation({ input_data_type: CompanySearchParameters }).call(search_params)
-      end
+      api_operation :get_companies, input_data_type: CompanySearchParameters
     end
   end
 end
