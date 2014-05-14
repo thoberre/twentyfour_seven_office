@@ -4,9 +4,11 @@ require "virtus"
 require "twentyfour_seven_office/version"
 
 require "twentyfour_seven_office/data_types/session_id"
+require "twentyfour_seven_office/data_types/company_search_parameters"
 require "twentyfour_seven_office/data_types/credential"
 
 require "twentyfour_seven_office/services/authentication"
+require "twentyfour_seven_office/services/company"
 
 module TwentyfourSevenOffice
   module Errors
