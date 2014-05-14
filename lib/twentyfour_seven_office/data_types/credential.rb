@@ -4,9 +4,9 @@ module TwentyfourSevenOffice
     class Credential
       include Virtus.model
 
-      attribute :username, String
-      attribute :password, String
-      attribute :application_id, String
+      attribute :username, String, required: true
+      attribute :password, String, required: true
+      attribute :application_id, String, required: true
       attribute :identity_id, String
 
       def to_message_hash

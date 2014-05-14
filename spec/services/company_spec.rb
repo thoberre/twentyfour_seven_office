@@ -2,7 +2,7 @@ require "spec_helper"
 
 # TODO need specs that verifies returned company data
 # gets properly converted to datatype classes
-describe TwentyfourSevenOffice::Services::Authentication do
+describe TwentyfourSevenOffice::Services::Company do
   include Savon::SpecHelper
 
   before(:all) { savon.mock! }
@@ -40,6 +40,7 @@ describe TwentyfourSevenOffice::Services::Authentication do
       }).returns(get_companies_response)
 
       c = TwentyfourSevenOffice::Services::Company.new(session_id)
+
       response = c.get_companies company_id: 1234,
                                  company_name: "ACME",
                                  changed_after: changed_after
