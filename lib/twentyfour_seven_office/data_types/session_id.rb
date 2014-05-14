@@ -4,7 +4,7 @@ module TwentyfourSevenOffice
       include Virtus.value_object
 
       values do
-        attribute :session_id, String
+        attribute :session_id, String, required: true
       end
 
       alias_method :to_s, :session_id
