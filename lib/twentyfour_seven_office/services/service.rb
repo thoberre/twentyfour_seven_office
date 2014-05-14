@@ -8,6 +8,11 @@ module TwentyfourSevenOffice
         @session_id = session_id
       end
 
+      def self.wsdl(uri)
+        client wsdl: uri
+        global :convert_request_keys_to, :none
+      end
+
       def self.api_operation(name_sym, opts = {})
         define_method name_sym do |input = nil|
           opts = opts.merge({ client: client, name: name_sym, session_id: @session_id })
