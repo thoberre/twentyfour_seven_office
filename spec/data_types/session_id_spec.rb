@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe TwentyfourSevenOffice::Models::SessionId do
-  subject { TwentyfourSevenOffice::Models::SessionId.new(session_id: "abcd") }
+describe TwentyfourSevenOffice::DataTypes::SessionId do
+  subject { described_class.new(session_id: "abcd") }
 
   describe "#to_cookie" do
     it "returns the session id as an instance of HTTPI::Cookie" do

@@ -3,7 +3,8 @@ require "virtus"
 
 require "twentyfour_seven_office/version"
 
-require "twentyfour_seven_office/models/session_id"
+require "twentyfour_seven_office/data_types/session_id"
+require "twentyfour_seven_office/data_types/credential"
 
 require "twentyfour_seven_office/services/authentication"
 

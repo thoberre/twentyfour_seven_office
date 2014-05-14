@@ -9,19 +9,12 @@ module TwentyfourSevenOffice
 
       operations :login, :has_session
 
-      def self.login(username, password, application_id)
-        message = {
-          credential: {
-            ApplicationId: application_id,
-            Password: password,
-            Username: username
-          }
-        }
-        r = super message: message
+      def self.login(credential)
+        r = super message: credential.to_message_hash
         session_id = r.body[:login_response][:login_result]
-        TwentyfourSevenOffice::Models::SessionId.new(session_id: session_id)
+        TwentyfourSevenOffice::DataTypes::SessionId.new(session_id: session_id)
       rescue Savon::SOAPFault => e
-        raise APIError.wrap(e, message)
+        raise APIError.wrap(e, credential)
       end
 
       def self.has_session(session_id)

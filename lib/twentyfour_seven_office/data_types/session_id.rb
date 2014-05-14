@@ -1,5 +1,5 @@
 module TwentyfourSevenOffice
-  module Models
+  module DataTypes
     class SessionId
       include Virtus.value_object
 

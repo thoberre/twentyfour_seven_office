@@ -32,7 +32,13 @@ describe TwentyfourSevenOffice::Services::Authentication do
       }
     }).returns(login_response)
 
-    session_id = subject.login("test@example.com", "secret", "abcd1234")
+    credential = TwentyfourSevenOffice::DataTypes::Credential.new({
+      username: "test@example.com",
+      password: "secret",
+      application_id: "abcd1234"
+    })
+
+    session_id = subject.login(credential)
 
     expect(session_id.session_id).to eq("csjilsasysb1h245qmwvsumx")
   end
