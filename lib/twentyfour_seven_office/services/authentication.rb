@@ -10,6 +10,10 @@ module TwentyfourSevenOffice
       operations :login, :has_session
 
       def self.login(credential)
+        if credential.is_a?(Hash)
+          credential = TwentyfourSevenOffice::DataTypes::Credential.new(credential)
+        end
+
         r = super message: credential.to_message_hash
         session_id = r.body[:login_response][:login_result]
         TwentyfourSevenOffice::DataTypes::SessionId.new(session_id: session_id)
