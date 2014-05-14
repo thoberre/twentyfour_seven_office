@@ -17,7 +17,77 @@ describe TwentyfourSevenOffice::Services::Company do
       xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <soap:Body>
         <GetCompaniesResponse xmlns="http://24sevenOffice.com/webservices">
-          <GetCompaniesResult />
+          <GetCompaniesResult>
+            <Company>
+              <Id>1234</Id>
+              <Name>ACME AS</Name>
+              <Addresses>
+                <Post xsi:nil="true" />
+                <Delivery xsi:nil="true" />
+                <Visit xsi:nil="true" />
+                <Invoice>
+                  <Street>Portveien 2</Street>
+                  <PostalCode>0001</PostalCode>
+                  <PostalArea>OSLO</PostalArea>
+                </Invoice>
+              </Addresses>
+              <PhoneNumbers>
+                <Home xsi:nil="true" />
+                <Fax xsi:nil="true" />
+                <Mobile xsi:nil="true" />
+                <Primary>
+                  <Value>22 22 22 22</Value>
+                </Primary>
+                <Work xsi:nil="true" />
+              </PhoneNumbers>
+              <EmailAddresses>
+                <Home xsi:nil="true" />
+                <Invoice xsi:nil="true" />
+                <Primary>
+                  <Value>contact@acme.com</Value>
+                </Primary>
+                <Work xsi:nil="true" />
+                <Alternative xsi:nil="true" />
+              </EmailAddresses>
+              <Status>1</Status>
+              <DistributionMethod>Print</DistributionMethod>
+            </Company>
+
+            <Company>
+              <Id>5678</Id>
+              <Name>Great Deals Inc.</Name>
+              <Addresses>
+                <Post xsi:nil="true" />
+                <Delivery xsi:nil="true" />
+                <Visit xsi:nil="true" />
+                <Invoice>
+                  <Street>Svingen 7</Street>
+                  <PostalCode>0002</PostalCode>
+                  <PostalArea>MOLDE</PostalArea>
+                </Invoice>
+              </Addresses>
+              <PhoneNumbers>
+                <Home xsi:nil="true" />
+                <Fax xsi:nil="true" />
+                <Mobile xsi:nil="true" />
+                <Primary>
+                  <Value>44 44 44 44</Value>
+                </Primary>
+                <Work xsi:nil="true" />
+              </PhoneNumbers>
+              <EmailAddresses>
+                <Home xsi:nil="true" />
+                <Invoice xsi:nil="true" />
+                <Primary>
+                  <Value>contact@gd.com</Value>
+                </Primary>
+                <Work xsi:nil="true" />
+                <Alternative xsi:nil="true" />
+              </EmailAddresses>
+              <Status>1</Status>
+              <DistributionMethod>EMail</DistributionMethod>
+            </Company>
+          </GetCompaniesResult>
         </GetCompaniesResponse>
       </soap:Body>
     </soap:Envelope>
@@ -41,11 +111,11 @@ describe TwentyfourSevenOffice::Services::Company do
 
       c = TwentyfourSevenOffice::Services::Company.new(session_id)
 
-      response = c.get_companies company_id: 1234,
+      companies = c.get_companies company_id: 1234,
                                  company_name: "ACME",
                                  changed_after: changed_after
 
-      expect(response).to be_successful 
+      expect(companies.length).to eq(2)
     end
   end
 end

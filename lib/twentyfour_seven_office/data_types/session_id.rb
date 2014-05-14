@@ -9,11 +9,6 @@ module TwentyfourSevenOffice
 
       alias_method :to_s, :session_id
 
-      def self.from_response(response)
-        session_id = response.body[:login_response][:login_result]
-        new(session_id: session_id)
-      end
-
       def to_cookie
         HTTPI::Cookie.new("ASP.NET_SessionId=#{session_id}")
       end

@@ -17,7 +17,9 @@ module TwentyfourSevenOffice
 
         response = client.call(name, opts)
 
-        transform_response(response)
+        result = response.body["#{name}_response".to_sym]["#{name}_result".to_sym]
+
+        transform_result(result)
       rescue Savon::SOAPFault => e
         raise TwentyfourSevenOffice::Errors::APIError.wrap(e, session_id: session_id, input: input)
       end
@@ -40,11 +42,11 @@ module TwentyfourSevenOffice
         end
       end
 
-      def transform_response(response)
+      def transform_result(result)
         if output_data_type
-          output_data_type.from_response(response)
+          output_data_type.from_result_hash(result)
         else
-          response
+          result
         end
       end
     end
