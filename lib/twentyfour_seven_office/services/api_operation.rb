@@ -2,7 +2,6 @@ module TwentyfourSevenOffice
   module Services
     class ApiOperation
       include Virtus.model
-      include TwentyfourSevenOffice::Utils
 
       attribute :client, Savon::Client, required: true
       attribute :name, Symbol, required: true
