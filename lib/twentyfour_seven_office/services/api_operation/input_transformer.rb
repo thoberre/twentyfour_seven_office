@@ -8,7 +8,8 @@ module TwentyfourSevenOffice
 
         input_hash.each do |name_sym, value|
           if value.is_a?(Array)
-            input = value
+            array_type = value.first.class.to_s.downcase
+            input = { array_type => value }
           elsif value.is_a?(Hash)
             input = to_request(input_data_types[name_sym].new(value))
           else
