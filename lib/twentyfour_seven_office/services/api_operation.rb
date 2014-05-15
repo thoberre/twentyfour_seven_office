@@ -28,21 +28,7 @@ module TwentyfourSevenOffice
 
       def add_inputs(opts, input_hash)
         if input_hash
-          message = {}
-
-          input_hash.each do |name_sym, value|
-            if value.is_a?(Array)
-              input = value
-            elsif value.is_a?(Hash)
-              input = input_data_types[name_sym].new(value).to_request
-            else
-              input = value.to_request
-            end
-            
-            message[camelcase(name_sym, true)] = input
-          end
-
-          opts[:message] = message
+          opts[:message] = InputTransformer.transform_input(input_data_types, input_hash)
         end
       end
 
@@ -53,26 +39,7 @@ module TwentyfourSevenOffice
       end
 
       def transform_result(result)
-        return result unless result.is_a?(Hash)
-
-        output_data_type = resolve_output_data_type(result.keys.first)
-
-        if output_data_type
-          data_type_name = output_data_type.name.split("::").last.snakecase.to_sym
-          data = result[data_type_name]
-          
-          if data.is_a?(Array)
-            data.map { |d| output_data_type.new(d) }
-          else
-            output_data_type.new(data)
-          end
-        else
-          result
-        end
-      end
-
-      def resolve_output_data_type(name_sym)
-        TwentyfourSevenOffice::DataTypes.const_get(camelcase(name_sym))
+        ResultTransformer.transform_result(result)
       end
     end
   end

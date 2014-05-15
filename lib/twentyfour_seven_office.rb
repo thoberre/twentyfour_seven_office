@@ -17,6 +17,8 @@ require "twentyfour_seven_office/data_types/email_addresses"
 require "twentyfour_seven_office/data_types/company"
 
 require "twentyfour_seven_office/services/api_operation"
+require "twentyfour_seven_office/services/api_operation/input_transformer"
+require "twentyfour_seven_office/services/api_operation/result_transformer"
 require "twentyfour_seven_office/services/service"
 require "twentyfour_seven_office/services/authentication"
 require "twentyfour_seven_office/services/company"
