@@ -2,17 +2,18 @@ module TwentyfourSevenOffice
   module Services
     class ApiOperation
       include Virtus.model
+      include TwentyfourSevenOffice::Utils
 
       attribute :client, Savon::Client, required: true
       attribute :name, Symbol, required: true
-      attribute :input_data_type, Class
+      attribute :input_data_types, Hash[Symbol => Class]
       attribute :output_data_type, Class
       attribute :session_id, TwentyfourSevenOffice::DataTypes::SessionId
 
-      def call(input = nil)
+      def call(input_hash)
         opts = {}
 
-        add_input(opts, input)
+        add_inputs(opts, input_hash)
         add_session_cookie(opts)
 
         response = client.call(name, opts)
@@ -26,13 +27,23 @@ module TwentyfourSevenOffice
 
       private
 
-      def add_input(opts, input)
-        if input
-          if input.is_a?(Hash) && input_data_type
-            input = input_data_type.new(input)
+      def add_inputs(opts, input_hash)
+        if input_hash
+          message = {}
+
+          input_hash.each do |name_sym, value|
+            if value.is_a?(Array)
+              input = value
+            elsif value.is_a?(Hash)
+              input = input_data_types[name_sym].new(value).to_request
+            else
+              input = value.to_request
+            end
+            
+            message[camelcase(name_sym, true)] = input
           end
 
-          opts[:message] = input.to_request
+          opts[:message] = message
         end
       end
 
@@ -44,7 +55,14 @@ module TwentyfourSevenOffice
 
       def transform_result(result)
         if output_data_type
-          output_data_type.from_result_hash(result)
+          data_type_name = output_data_type.name.split("::").last.snakecase.to_sym
+          data = result[data_type_name]
+          
+          if data.is_a?(Array)
+            data.map { |d| output_data_type.new(d) }
+          else
+            output_data_type.new(data)
+          end
         else
           result
         end

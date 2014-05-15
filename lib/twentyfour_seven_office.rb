@@ -15,6 +15,7 @@ require "twentyfour_seven_office/data_types/phone_numbers"
 require "twentyfour_seven_office/data_types/email_address"
 require "twentyfour_seven_office/data_types/email_addresses"
 require "twentyfour_seven_office/data_types/company"
+require "twentyfour_seven_office/data_types/string_list"
 
 require "twentyfour_seven_office/services/api_operation"
 require "twentyfour_seven_office/services/service"

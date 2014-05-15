@@ -25,7 +25,7 @@ describe TwentyfourSevenOffice::Services::Authentication do
       application_id: "abcd1234"
     })
 
-    session_id = subject.login(credential)
+    session_id = subject.login(credential: credential)
 
     expect(session_id.session_id).to eq("csjilsasysb1h245qmwvsumx")
   end
