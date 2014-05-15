@@ -3,7 +3,6 @@ module TwentyfourSevenOffice
     # http://help.24sevenoffice.com/index.php?title=API:Authenticate_Datatyper#Credential
     class Credential
       include Virtus.model
-      include InputDataType
 
       attribute :username, String, required: true
       attribute :password, String, required: true
