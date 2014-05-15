@@ -6,20 +6,7 @@ describe TwentyfourSevenOffice::Services::Authentication do
   before(:all) { savon.mock! }
   after(:all) { savon.unmock! }
 
-  let(:login_response) do
-    <<-XML
-    <soap:Envelope
-      xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-      <soap:Body>
-        <LoginResponse xmlns="http://24sevenOffice.com/webservices">
-          <LoginResult>csjilsasysb1h245qmwvsumx</LoginResult>
-        </LoginResponse>
-      </soap:Body>
-    </soap:Envelope>
-    XML
-  end
+  let(:login_response) { xml_fixture :login_response }
 
   subject { described_class }
  

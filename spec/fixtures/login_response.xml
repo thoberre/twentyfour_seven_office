@@ -1,0 +1,10 @@
+<soap:Envelope
+  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+    <LoginResponse xmlns="http://24sevenOffice.com/webservices">
+      <LoginResult>csjilsasysb1h245qmwvsumx</LoginResult>
+    </LoginResponse>
+  </soap:Body>
+</soap:Envelope>
