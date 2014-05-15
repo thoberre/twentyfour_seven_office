@@ -32,7 +32,7 @@ module TwentyfourSevenOffice
             input = input_data_type.new(input)
           end
 
-          opts[:message] = input.to_message_hash
+          opts[:message] = input.to_request
         end
       end
 
