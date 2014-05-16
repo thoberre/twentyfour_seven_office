@@ -3,6 +3,7 @@ module TwentyfourSevenOffice
     class Service
       extend Savon::Model
       include TwentyfourSevenOffice::DataTypes
+      include TwentyfourSevenOffice::Utils
 
       def initialize(session_id)
         @session_id = session_id
