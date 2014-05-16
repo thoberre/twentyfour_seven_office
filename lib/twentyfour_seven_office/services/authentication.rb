@@ -6,8 +6,12 @@ module TwentyfourSevenOffice
       api_operation :login, input_data_types: { credential: Credential }
       api_operation :has_session
 
-      def self.login(credential)
-        session_id = new(nil).login(credential)
+      def self.login(credentials_hash)
+        unless credentials_hash.has_key?(:credential)
+          credentials_hash = { credential: credentials_hash }
+        end
+
+        session_id = new(nil).login(credentials_hash)
         SessionId.new(session_id: session_id)
       end
 
