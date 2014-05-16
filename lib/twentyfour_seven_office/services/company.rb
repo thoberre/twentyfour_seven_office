@@ -9,7 +9,7 @@ module TwentyfourSevenOffice
       def where(query = {})
         return_params = ::TwentyfourSevenOffice::DataTypes::Company.new.attributes.keys
         return_params = return_params.map { |attr| camelcase(attr.to_s) }
-        get_companies(search_params: query, return_parameters: return_params)
+        get_companies(search_params: query, return_properties: return_params)
       end
     end
   end
