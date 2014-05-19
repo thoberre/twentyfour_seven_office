@@ -11,7 +11,7 @@ module TwentyfourSevenOffice
         if output_data_type
           data_type_name = output_data_type.name.split("::").last.snakecase.to_sym
           data = result[data_type_name]
-          
+
           if data.is_a?(Array)
             data.map { |d| output_data_type.new(d) }
           else
