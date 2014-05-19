@@ -17,6 +17,12 @@ module TwentyfourSevenOffice
         end
       end
 
+      def fax_number
+        if phone_numbers && phone_numbers.fax
+          phone_numbers.fax.value
+        end
+      end
+
       def primary_email_address
         if email_addresses && email_addresses.primary
           email_addresses.primary.value
