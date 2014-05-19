@@ -12,7 +12,7 @@ module TwentyfourSevenOffice
 
       def all
         search_params = { changed_after: DateTime.new(1970, 1, 1) }
-        get_companies(search_params: changed_after, return_properties: return_props)
+        get_companies(search_params: search_params, return_properties: return_props)
       end
 
       private
