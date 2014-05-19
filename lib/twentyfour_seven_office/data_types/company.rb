@@ -10,6 +10,24 @@ module TwentyfourSevenOffice
       attribute :addresses, Addresses
       attribute :phone_numbers, PhoneNumbers
       attribute :email_addresses, EmailAddresses
+
+      def primary_phone_number
+        if phone_numbers && phone_numbers.primary
+          phone_numbers.primary.value
+        end
+      end
+
+      def primary_email_address
+        if email_addresses && email_addresses.primary
+          email_addresses.primary.value
+        end
+      end
+
+      def postal_address
+        if addresses
+          addresses.post
+        end
+      end
     end
   end
 end
