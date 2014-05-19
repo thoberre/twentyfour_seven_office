@@ -7,6 +7,8 @@ module TwentyfourSevenOffice
       attribute :id, Integer
       attribute :name, String
       attribute :organization_number, String
+      attribute :country, String
+      attribute :type, String
       attribute :addresses, Addresses
       attribute :phone_numbers, PhoneNumbers
       attribute :email_addresses, EmailAddresses
