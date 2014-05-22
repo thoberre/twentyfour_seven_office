@@ -14,7 +14,7 @@ module TwentyfourSevenOffice
       attribute :email_addresses, EmailAddresses
 
       def self.xml_attribute_names
-        attributes.map { |a| TwentyfourSevenOffice::Utils.camelcase(a.name.to_s) }
+        attribute_set.map { |a| TwentyfourSevenOffice::Utils.camelcase(a.name.to_s) }
       end
 
       def primary_phone_number
