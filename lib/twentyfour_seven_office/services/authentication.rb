@@ -6,12 +6,18 @@ module TwentyfourSevenOffice
       api_operation :login, input_data_types: { credential: Credential }
       api_operation :has_session
 
-      def self.login(credentials_hash)
-        unless credentials_hash.has_key?(:credential)
-          credentials_hash = { credential: credentials_hash }
+      def self.login(credentials)
+        if credentials.is_a?(TwentyfourSevenOffice::DataTypes::Credential)
+          credentials = { credential: TwentyfourSevenOffice::DataTypes::Credential.new(credentials) }
+        elsif credentials.is_a?(Hash)
+          unless credentials.has_key?(:credential)
+            credentials = { credential: credentials }
+          end
+        else
+          raise ArgumentError, "credential must be a Hash or a TwentyfourSevenOffice::DataTypes::Credential"
         end
 
-        session_id = new(nil).login(credentials_hash)
+        session_id = new(nil).login(credentials)
         SessionId.new(session_id: session_id)
       end
 
