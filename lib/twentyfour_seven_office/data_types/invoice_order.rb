@@ -25,7 +25,7 @@ module TwentyfourSevenOffice
       attribute :paid, DateTime
       attribute :ocr, String
       attribute :customer_org_no, String
-      attribute :currency, String
+      attribute :currency, Currency
       attribute :payment_method_id, Integer
       attribute :payment_amount, Float
       attribute :production_manager_id, Integer
