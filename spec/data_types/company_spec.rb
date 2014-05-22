@@ -2,6 +2,15 @@ require "spec_helper"
 
 describe TwentyfourSevenOffice::DataTypes::Company do
 
+  describe ".xml_attribute_names" do
+    it "returns the attributes as an array of camelcased strings" do
+      expect(described_class.xml_attribute_names).to include(
+        "Id", "Name", "OrganizationNumber", "Country", "Type", "Addresses",
+        "PhoneNumbers", "EmailAddresses"
+      )
+    end
+  end
+
   describe "#primary_phone_number" do
     it "returns nil when there are no phone numbers" do
       company = described_class.new(phone_numbers: nil)

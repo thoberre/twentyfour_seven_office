@@ -34,7 +34,7 @@ describe TwentyfourSevenOffice::Services::Company do
   describe "#where" do
     it "resolves returnProperties automatically based on Company attributes" do
       expected_return_props =
-        TwentyfourSevenOffice::DataTypes::Company.attribute_names_for_export
+        TwentyfourSevenOffice::DataTypes::Company.xml_attribute_names
 
       savon.expects(:get_companies).with(message: {
         searchParams: {
@@ -52,7 +52,7 @@ describe TwentyfourSevenOffice::Services::Company do
   describe "#all" do
     it "uses a changed_after date far back in time to ensure all customers are returned" do
       expected_return_props =
-        TwentyfourSevenOffice::DataTypes::Company.attribute_names_for_export
+        TwentyfourSevenOffice::DataTypes::Company.xml_attribute_names
 
       changed_after = DateTime.new(1970, 1, 1)
 

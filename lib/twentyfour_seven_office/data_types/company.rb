@@ -13,7 +13,7 @@ module TwentyfourSevenOffice
       attribute :phone_numbers, PhoneNumbers
       attribute :email_addresses, EmailAddresses
 
-      def self.attribute_names_for_export
+      def self.xml_attribute_names
         attributes.map { |a| TwentyfourSevenOffice::Utils.camelcase(a.name.to_s) }
       end
 

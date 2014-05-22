@@ -18,7 +18,7 @@ module TwentyfourSevenOffice
       private
 
       def return_props
-        ::TwentyfourSevenOffice::DataTypes::Company.attribute_names_for_export
+        ::TwentyfourSevenOffice::DataTypes::Company.xml_attribute_names
       end
     end
   end
