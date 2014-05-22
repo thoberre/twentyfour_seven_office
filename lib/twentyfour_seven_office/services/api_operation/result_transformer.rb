@@ -6,10 +6,10 @@ module TwentyfourSevenOffice
       def self.transform_result(result)
         return result unless result.is_a?(Hash)
 
-        output_data_type = resolve_output_data_type(result.keys.first)
+        data_type_name = result.keys.first
+        output_data_type = resolve_output_data_type(data_type_name)
 
         if output_data_type
-          data_type_name = output_data_type.name.split("::").last.snakecase.to_sym
           data = result[data_type_name]
 
           if data.is_a?(Array)
