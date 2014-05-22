@@ -11,6 +11,49 @@ describe TwentyfourSevenOffice::DataTypes::Company do
     end
   end
 
+  # spec for inherited method
+  describe "#to_request" do
+    it "recursively converts data types to their xml compatible representations" do
+      c = described_class.new(
+        id: 1234,
+        name: "ACME",
+        country: "NO",
+        type: "Consumer",
+        addresses: {
+          post: {
+            street: "Portveien 2",
+            country: "Norway"
+          }
+        },
+        phone_numbers: {
+          primary: {
+            value: "11 11 11 11"
+          }
+        }
+      )
+
+      hash = c.to_request
+
+      expect(hash).to eq({
+        Id: 1234,
+        Name: "ACME",
+        Country: "NO",
+        Type: "Consumer",
+        Addresses: {
+          Post: {
+            Street: "Portveien 2",
+            Country: "Norway"
+          }
+        },
+        PhoneNumbers: {
+          Primary: {
+            Value: "11 11 11 11"
+          }
+        }
+      })
+    end
+  end
+
   describe "#primary_phone_number" do
     it "returns nil when there are no phone numbers" do
       company = described_class.new(phone_numbers: nil)
