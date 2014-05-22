@@ -18,8 +18,7 @@ module TwentyfourSevenOffice
       private
 
       def return_props
-        rp = ::TwentyfourSevenOffice::DataTypes::Company.new.attributes.keys
-        rp.map { |attr| camelcase(attr.to_s) }
+        ::TwentyfourSevenOffice::DataTypes::Company.attribute_names_for_export
       end
     end
   end

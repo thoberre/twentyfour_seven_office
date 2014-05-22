@@ -8,11 +8,10 @@ describe TwentyfourSevenOffice::Services::Company do
 
   let(:get_companies_response) { xml_fixture :get_companies_response }
   let(:session_id) { TwentyfourSevenOffice::DataTypes::SessionId.new(session_id: "abcdefgh") }
+  let(:changed_after) { DateTime.now }
 
   describe "#get_companies" do
     it "returns all companies matcing the search parameters" do
-      changed_after = DateTime.now
-
       savon.expects(:get_companies).with(message: {
         searchParams: {
           CompanyId: 1234,
@@ -24,12 +23,49 @@ describe TwentyfourSevenOffice::Services::Company do
 
       c = TwentyfourSevenOffice::Services::Company.new(session_id)
 
-      companies = c.get_companies(search_params: {  company_id: 1234,
-                                                    company_name: "ACME",
-                                                    changed_after: changed_after },
-                                  return_properties: [])
+      search_params = { company_id: 1234, company_name: "ACME", changed_after: changed_after }
+
+      companies = c.get_companies(search_params: search_params, return_properties: [])
 
       expect(companies.length).to eq(2)
+    end
+  end
+
+  describe "#where" do
+    it "resolves returnProperties automatically based on Company attributes" do
+      expected_return_props =
+        TwentyfourSevenOffice::DataTypes::Company.attribute_names_for_export
+
+      savon.expects(:get_companies).with(message: {
+        searchParams: {
+          ChangedAfter: changed_after,
+        },
+        returnProperties: { "string" => expected_return_props }
+      }).returns(get_companies_response)
+
+      c = TwentyfourSevenOffice::Services::Company.new(session_id)
+
+      c.where(changed_after: changed_after)
+    end
+  end
+
+  describe "#all" do
+    it "uses a changed_after date far back in time to ensure all customers are returned" do
+      expected_return_props =
+        TwentyfourSevenOffice::DataTypes::Company.attribute_names_for_export
+
+      changed_after = DateTime.new(1970, 1, 1)
+
+      savon.expects(:get_companies).with(message: {
+        searchParams: {
+          ChangedAfter: changed_after,
+        },
+        returnProperties: { "string" => expected_return_props }
+      }).returns(get_companies_response)
+
+      c = TwentyfourSevenOffice::Services::Company.new(session_id)
+
+      c.all
     end
   end
 end

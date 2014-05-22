@@ -13,6 +13,10 @@ module TwentyfourSevenOffice
       attribute :phone_numbers, PhoneNumbers
       attribute :email_addresses, EmailAddresses
 
+      def self.attribute_names_for_export
+        attributes.map { |a| TwentyfourSevenOffice::Utils.camelcase(a.name.to_s) }
+      end
+
       def primary_phone_number
         if phone_numbers && phone_numbers.primary
           phone_numbers.primary.value
