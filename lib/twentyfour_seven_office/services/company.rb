@@ -4,7 +4,7 @@ module TwentyfourSevenOffice
       wsdl "https://api.24sevenoffice.com/CRM/Company/V001/CompanyService.asmx?WSDL"
 
       api_operation :get_companies,
-                    input_data_types: { search_params: CompanySearchParameters, return_properties: Array }
+                    input_data_types: { search_params: CompanySearchParameters, return_properties: ArrayOf[String] }
 
       def where(query = {})
         get_companies(search_params: query, return_properties: return_props)
