@@ -1,9 +1,7 @@
 module TwentyfourSevenOffice
   module DataTypes
     # http://help.24sevenoffice.com/index.php?title=API:CompanyService_DataTypes#Address
-    class Address
-      include Virtus.model
-
+    class Address < DataType
       attribute :street, String
       attribute :state, String
       attribute :postal_code, String

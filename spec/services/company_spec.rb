@@ -23,8 +23,9 @@ describe TwentyfourSevenOffice::Services::Company do
 
       c = TwentyfourSevenOffice::Services::Company.new(session_id)
 
-      search_params = { company_id: 1234, company_name: "ACME", changed_after: changed_after }
-
+      search_params = TwentyfourSevenOffice::DataTypes::CompanySearchParameters.new(
+        company_id: 1234, company_name: "ACME", changed_after: changed_after
+      )
       companies = c.get_companies(search_params: search_params, return_properties: [])
 
       expect(companies.length).to eq(2)

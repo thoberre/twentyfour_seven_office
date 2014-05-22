@@ -1,9 +1,7 @@
 module TwentyfourSevenOffice
   module DataTypes
     # http://help.24sevenoffice.com/index.php?title=API:CompanyService_DataTypes#Company
-    class Company
-      include Virtus.model
-
+    class Company < DataType
       attribute :id, Integer
       attribute :name, String
       attribute :organization_number, String

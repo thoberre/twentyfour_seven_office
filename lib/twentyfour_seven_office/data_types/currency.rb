@@ -1,8 +1,6 @@
 module TwentyfourSevenOffice
   module DataTypes
-    class Currency
-      include Virtus.model
-
+    class Currency < DataType
       attribute :rate, Float
       attribute :unit, Integer
       attribute :symbol, String

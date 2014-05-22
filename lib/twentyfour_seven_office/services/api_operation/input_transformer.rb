@@ -10,11 +10,10 @@ module TwentyfourSevenOffice
           input = case value
           when Array
             input_data_types[name_sym].to_request(value)
-          when Hash
-            data = input_data_types[name_sym].new(value)
-            to_request(data)
+          when TwentyfourSevenOffice::DataTypes::DataType
+            value.to_request
           else
-            to_request(value)
+            value
           end
 
           message[camelcase(name_sym, true)] = input

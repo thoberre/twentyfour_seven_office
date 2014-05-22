@@ -1,9 +1,7 @@
 module TwentyfourSevenOffice
   module DataTypes
     # http://help.24sevenoffice.com/index.php?title=API:Authenticate_Datatyper#Credential
-    class Credential
-      include Virtus.model
-
+    class Credential < DataType
       attribute :username, String, required: true
       attribute :password, String, required: true
       attribute :application_id, String, required: true

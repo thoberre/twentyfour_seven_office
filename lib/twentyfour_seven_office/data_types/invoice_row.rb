@@ -1,9 +1,7 @@
 module TwentyfourSevenOffice
   module DataTypes
     # http://help.24sevenoffice.com/index.php?title=API:InvoiceService_DataTypes#InvoiceRow
-    class InvoiceRow
-      include Virtus.model
-
+    class InvoiceRow < DataType
       attribute :product_id, Integer
       attribute :row_id, Integer
       attribute :vat_rate, Float

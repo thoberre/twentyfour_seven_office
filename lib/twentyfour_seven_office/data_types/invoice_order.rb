@@ -1,9 +1,7 @@
 module TwentyfourSevenOffice
   module DataTypes
     # http://help.24sevenoffice.com/index.php?title=API:InvoiceService_DataTypes#InvoiceOrder
-    class InvoiceOrder
-      include Virtus.model
-
+    class InvoiceOrder < DataType
       attribute :order_id, Integer
       attribute :customer_id, Integer
       attribute :customer_name, String
