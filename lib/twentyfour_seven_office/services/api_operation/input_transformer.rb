@@ -7,23 +7,30 @@ module TwentyfourSevenOffice
         message = {}
 
         input_hash.each do |name_sym, value|
-          if value.is_a?(Array)
-            if value.any?
-              array_type = value.first.class.to_s.downcase
-              input = { array_type => value }
-            else
-              input = value
-            end
-          elsif value.is_a?(Hash)
-            input = to_request(input_data_types[name_sym].new(value))
+          input = case value
+          when Array
+            value.any? ? { array_item_xml_type_name(value) => value } : value
+          when Hash
+            data = input_data_types[name_sym].new(value)
+            to_request(data)
           else
-            input = to_request(value)
+            to_request(value)
           end
 
           message[camelcase(name_sym, true)] = input
         end
 
         message
+      end
+
+      private
+
+      # Returns the "xml name" of the type of the
+      # first element in the array.
+      # All items in the array are expected to be
+      # of the same type.
+      def self.array_item_xml_type_name(ary)
+        camelcase(ary.first.class.name, true)
       end
 
       def self.to_request(data)
