@@ -8,8 +8,12 @@ module TwentyfourSevenOffice
         attribute_set.map { |a| TwentyfourSevenOffice::Utils.camelcase(a.name.to_s) }
       end
 
+      def self.xml_type_name
+        self.name.split("::").last
+      end
+
       def xml_type_name
-        self.class.name.split("::").last
+        self.class.xml_type_name
       end
 
       def to_request

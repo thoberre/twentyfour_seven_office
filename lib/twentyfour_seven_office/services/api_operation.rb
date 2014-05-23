@@ -5,7 +5,7 @@ module TwentyfourSevenOffice
 
       attribute :client, Savon::Client, required: true
       attribute :name, Symbol, required: true
-      attribute :input_data_types, Hash[Symbol => Object]
+      attribute :input_data_types, InputHash
       attribute :session_id, TwentyfourSevenOffice::DataTypes::SessionId
 
       def call(input_hash)
