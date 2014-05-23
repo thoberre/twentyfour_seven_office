@@ -41,7 +41,7 @@ describe TwentyfourSevenOffice::Services::Company do
         searchParams: {
           ChangedAfter: changed_after,
         },
-        returnProperties: { "string" => expected_return_props }
+        returnProperties: { string: expected_return_props }
       }).returns(get_companies_response)
 
       c = TwentyfourSevenOffice::Services::Company.new(session_id)
@@ -61,7 +61,7 @@ describe TwentyfourSevenOffice::Services::Company do
         searchParams: {
           ChangedAfter: changed_after,
         },
-        returnProperties: { "string" => expected_return_props }
+        returnProperties: { string: expected_return_props }
       }).returns(get_companies_response)
 
       c = TwentyfourSevenOffice::Services::Company.new(session_id)

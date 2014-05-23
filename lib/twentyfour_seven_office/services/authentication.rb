@@ -7,18 +7,14 @@ module TwentyfourSevenOffice
       api_operation :has_session
 
       def self.login(credentials)
-        if credentials.is_a?(TwentyfourSevenOffice::DataTypes::Credential)
-          credentials = { credential: TwentyfourSevenOffice::DataTypes::Credential.new(credentials) }
-        elsif credentials.is_a?(Hash)
-          unless credentials.has_key?(:credential)
-            credentials = { credential: credentials }
-          end
+        if !hash_with_required_key?(credentials)
+          login(credential: credentials)
+        elsif credentials[:credential].is_a?(Hash)
+          login(credential: TwentyfourSevenOffice::DataTypes::Credential.new(credentials[:credential]))
         else
-          raise ArgumentError, "credential must be a Hash or a TwentyfourSevenOffice::DataTypes::Credential"
+          session_id = new(nil).login(credentials)
+          SessionId.new(session_id: session_id)
         end
-
-        session_id = new(nil).login(credentials)
-        SessionId.new(session_id: session_id)
       end
 
       def self.has_session(session_id)
@@ -27,6 +23,12 @@ module TwentyfourSevenOffice
 
       class << self
         alias_method :has_session?, :has_session
+      end
+
+      private
+
+      def self.hash_with_required_key?(value)
+        value.is_a?(Hash) && value.has_key?(:credential)
       end
     end
   end
