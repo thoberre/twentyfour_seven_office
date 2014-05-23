@@ -4,6 +4,10 @@ module TwentyfourSevenOffice
       include Virtus.model
       include TwentyfourSevenOffice::Utils
 
+      def self.xml_attribute_names
+        attribute_set.map { |a| TwentyfourSevenOffice::Utils.camelcase(a.name.to_s) }
+      end
+
       def xml_type_name
         self.class.name.split("::").last
       end

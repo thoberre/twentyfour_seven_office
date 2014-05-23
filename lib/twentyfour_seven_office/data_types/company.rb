@@ -11,10 +11,6 @@ module TwentyfourSevenOffice
       attribute :phone_numbers, PhoneNumbers
       attribute :email_addresses, EmailAddresses
 
-      def self.xml_attribute_names
-        attribute_set.map { |a| TwentyfourSevenOffice::Utils.camelcase(a.name.to_s) }
-      end
-
       def primary_phone_number
         if phone_numbers && phone_numbers.primary
           phone_numbers.primary.value
