@@ -54,9 +54,9 @@ describe TwentyfourSevenOffice::DataTypes::DataType do
       hash = io.to_request
 
       expect(hash).to eq({
-        InvoiceRows: [
-          { Price: 5.0 }, { Price: 10.0 }, { Price: 15.0 }
-        ]
+        InvoiceRows: {
+          InvoiceRow: [{ Price: 5.0 }, { Price: 10.0 }, { Price: 15.0 }] 
+        }
       })
     end
   end
