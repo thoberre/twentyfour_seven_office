@@ -6,6 +6,9 @@ module TwentyfourSevenOffice
       api_operation :get_products,
                     input_data_types: { search_params: ProductSearchParameters, return_properties: Array[String] }
 
+      api_operation :save_products,
+                    input_data_types: { products: Array[Product] }
+
       def where(query = {})
         search_params = TwentyfourSevenOffice::DataTypes::ProductSearchParameters.new(query)
         get_products(search_params: search_params, return_properties: return_props)
