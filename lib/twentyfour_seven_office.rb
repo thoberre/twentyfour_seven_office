@@ -19,6 +19,8 @@ require "twentyfour_seven_office/data_types/api_exception"
 require "twentyfour_seven_office/data_types/currency"
 require "twentyfour_seven_office/data_types/invoice_row"
 require "twentyfour_seven_office/data_types/invoice_order"
+require "twentyfour_seven_office/data_types/product_search_parameters"
+require "twentyfour_seven_office/data_types/product"
 
 require "twentyfour_seven_office/services/api_operation/input"
 require "twentyfour_seven_office/services/api_operation"
@@ -27,6 +29,7 @@ require "twentyfour_seven_office/services/api_operation/result_transformer"
 require "twentyfour_seven_office/services/service"
 require "twentyfour_seven_office/services/authentication"
 require "twentyfour_seven_office/services/company"
+require "twentyfour_seven_office/services/product"
 
 module TwentyfourSevenOffice
   module Errors
