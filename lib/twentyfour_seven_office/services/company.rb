@@ -6,6 +6,8 @@ module TwentyfourSevenOffice
       api_operation :get_companies,
                     input_data_types: { search_params: CompanySearchParameters, return_properties: Array[String] }
 
+      api_operation :save_companies, input_data_types: { companies: Array[Company] }
+
       def where(query = {})
         search_params = TwentyfourSevenOffice::DataTypes::CompanySearchParameters.new(query)
         get_companies(search_params: search_params, return_properties: return_props)
@@ -16,6 +18,20 @@ module TwentyfourSevenOffice
           changed_after: DateTime.new(1970, 1, 1)
         )
         get_companies(search_params: search_params, return_properties: return_props)
+      end
+
+      def save(company)
+        if company.is_a?(Hash)
+          company = TwentyfourSevenOffice::DataTypes::Company.new(company)
+        end
+
+        company = save_companies(companies: [company])
+
+        if company
+          company.id
+        else
+          nil
+        end
       end
 
       private

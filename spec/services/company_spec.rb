@@ -7,6 +7,7 @@ describe TwentyfourSevenOffice::Services::Company do
   after(:all) { savon.unmock! }
 
   let(:get_companies_response) { xml_fixture :get_companies_response }
+  let(:save_companies_response) { xml_fixture :save_companies_response }
   let(:session_id) { TwentyfourSevenOffice::DataTypes::SessionId.new(session_id: "abcdefgh") }
   let(:changed_after) { DateTime.now }
 
@@ -67,6 +68,21 @@ describe TwentyfourSevenOffice::Services::Company do
       c = TwentyfourSevenOffice::Services::Company.new(session_id)
 
       c.all
+    end
+  end
+
+  describe "#save" do
+    it "saves/creates a single company" do
+      savon.expects(:save_companies).with(message: {
+        companies: { Company: [{ Name: "Test Company" }] }
+      }).returns(save_companies_response)
+
+      company = TwentyfourSevenOffice::DataTypes::Company.new(name: "Test Company")
+
+      c = TwentyfourSevenOffice::Services::Company.new(session_id)
+      id = c.save(company)
+
+      expect(id).to eq(5678)
     end
   end
 end
