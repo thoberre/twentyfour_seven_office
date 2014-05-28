@@ -3,13 +3,42 @@ module TwentyfourSevenOffice
     # http://help.24sevenoffice.com/index.php?title=API:CompanyService_DataTypes#Company
     class Company < DataType
       attribute :id, Integer
-      attribute :name, String
       attribute :organization_number, String
-      attribute :country, String
-      attribute :type, String
+      attribute :name, String
+      attribute :first_name, String
+      attribute :nick_name, String
       attribute :addresses, Addresses
       attribute :phone_numbers, PhoneNumbers
       attribute :email_addresses, EmailAddresses
+      attribute :url, String
+      attribute :country, String
+      attribute :note, String
+      attribute :invoice_language, String
+      attribute :type, String
+      attribute :username, String
+      attribute :password, String
+      attribute :incorporation_date, DateTime
+      attribute :date_created, DateTime
+      attribute :status, Integer
+      attribute :price_list, Integer
+      attribute :owner, Integer
+      attribute :bank_account_no, String
+      attribute :terms_of_delivery_id, Integer
+      attribute :account_debit, Integer
+      attribute :account_credit, Integer
+      attribute :discount, Float
+      attribute :type_group, Integer
+      attribute :share_capital, Float
+      attribute :number_of_employees, Integer
+      attribute :turnover, Float
+      attribute :profit, Float
+      attribute :industry_id, Integer
+      attribute :member_no, Integer
+      attribute :date_changed, DateTime
+      attribute :block_invoice, Boolean
+      # attribute :relations, Array[Relation]
+      # attribute :maps, Array[CompanyMap]
+      attribute :distribution_method, String
 
       def primary_phone_number
         if phone_numbers && phone_numbers.primary
