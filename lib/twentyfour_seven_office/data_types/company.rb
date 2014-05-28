@@ -53,7 +53,7 @@ module TwentyfourSevenOffice
       attribute :date_changed, DateTime
       attribute :block_invoice, Boolean
       # attribute :relations, Array[Relation]
-      # attribute :maps, Array[CompanyMap]
+      attribute :maps, Array[CompanyMap]
       attribute :distribution_method, DistributionMethodString
 
       def primary_phone_number

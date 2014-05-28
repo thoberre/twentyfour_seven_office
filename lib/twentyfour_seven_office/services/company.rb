@@ -8,6 +8,8 @@ module TwentyfourSevenOffice
 
       api_operation :save_companies, input_data_types: { companies: Array[Company] }
 
+      api_operation :save_maps, input_data_types: { maps: Array[CompanyMap] }
+
       def where(query = {})
         search_params = TwentyfourSevenOffice::DataTypes::CompanySearchParameters.new(query)
         get_companies(search_params: search_params, return_properties: return_props)
