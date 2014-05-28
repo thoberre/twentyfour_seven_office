@@ -20,7 +20,7 @@ module TwentyfourSevenOffice
 
         transform_result(result)
       rescue Savon::SOAPFault => e
-        raise TwentyfourSevenOffice::Errors::APIError.wrap(e, session_id: session_id, input: input)
+        raise TwentyfourSevenOffice::Errors::APIError.wrap(e, opts)
       end
 
       private
