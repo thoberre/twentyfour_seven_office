@@ -2,6 +2,22 @@ module TwentyfourSevenOffice
   module DataTypes
     # http://help.24sevenoffice.com/index.php?title=API:CompanyService_DataTypes#Company
     class Company < DataType
+      class DistributionMethodString < Virtus::Attribute
+        VALID_VALUES = %w{ Unchanged Print Email ElectronicInvoice }
+
+        def coerce(value)
+          return if value.nil?
+
+          value = value.to_s
+
+          if VALID_VALUES.include?(value)
+            value
+          else
+            "Unchanged"
+          end
+        end
+      end
+
       attribute :id, Integer
       attribute :organization_number, String
       attribute :name, String
@@ -38,7 +54,7 @@ module TwentyfourSevenOffice
       attribute :block_invoice, Boolean
       # attribute :relations, Array[Relation]
       # attribute :maps, Array[CompanyMap]
-      attribute :distribution_method, String
+      attribute :distribution_method, DistributionMethodString
 
       def primary_phone_number
         if phone_numbers && phone_numbers.primary

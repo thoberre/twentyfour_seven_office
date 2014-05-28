@@ -2,6 +2,37 @@ require "spec_helper"
 
 describe TwentyfourSevenOffice::DataTypes::Company do
 
+  describe "attributes" do
+    subject(:company) { described_class.new }
+
+    describe "distribution_method" do
+      it "accepts the value 'Unchanged'" do
+        company.distribution_method = "Unchanged"
+        expect(company.distribution_method).to eq("Unchanged")
+      end
+
+      it "accepts the value 'Email'" do
+        company.distribution_method = "Email"
+        expect(company.distribution_method).to eq("Email")
+      end
+
+      it "accepts the value 'Print'" do
+        company.distribution_method = "Print"
+        expect(company.distribution_method).to eq("Print")
+      end
+
+      it "accepts the value 'ElectronicInvoice'" do
+        company.distribution_method = "ElectronicInvoice"
+        expect(company.distribution_method).to eq("ElectronicInvoice")
+      end
+
+      it "coerces to 'Unchanged' if the value is not valid" do
+        company.distribution_method = "Horse and carriage"
+        expect(company.distribution_method).to eq("Unchanged")
+      end
+    end
+  end
+
   describe ".xml_attribute_names" do
     it "returns the attributes as an array of camelcased strings" do
       expect(described_class.xml_attribute_names).to include(
