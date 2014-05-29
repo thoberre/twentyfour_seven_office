@@ -49,12 +49,23 @@ module TwentyfourSevenOffice
       #   ...
       # }
       #
+      # Rewriting only happens for hash values where the matching
+      # output data type attribute primitive is an Array (e.g. Company#maps).
+      # Elements that are the only child of a parent element will be converted
+      # to a hash by Savon. This method will however always wrap values in an Array.
+      #
       # Bit of a hack, to be honest.
       def self.rewrite_values_for_array_attributes(output_data_type, data)
         output_data_type.attribute_set.each do |attr|
+          # Should rewrite hash?
           if attr.primitive == Array && data[attr.name]
+            # Get value to rewrite. For the 24SevenOffice API, there will
+            # never be more than 1 key/value pair.
             values = data[attr.name].values.first
+            # Wrap value in array if necessary
             values = values.is_a?(Array) ? values : [values]
+            # Write the new hash value. The hash key that corresponds to
+            # the type name has now been removed (:company_map in the example).
             data[attr.name] = values
           end
         end
