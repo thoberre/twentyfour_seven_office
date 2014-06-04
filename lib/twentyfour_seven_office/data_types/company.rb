@@ -62,6 +62,12 @@ module TwentyfourSevenOffice
         end
       end
 
+      def mobile_phone_number
+        if phone_numbers && phone_numbers.mobile
+          phone_numbers.mobile.value
+        end
+      end
+
       def fax_number
         if phone_numbers && phone_numbers.fax
           phone_numbers.fax.value
