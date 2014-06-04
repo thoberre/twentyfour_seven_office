@@ -74,7 +74,7 @@ describe TwentyfourSevenOffice::Services::Company do
   describe "#save" do
     it "saves/creates a single company" do
       savon.expects(:save_companies).with(message: {
-        companies: { Company: [{ Name: "Test Company" }] }
+        companies: { Company: [{ Name: "Test Company", Maps: [] }] }
       }).returns(save_companies_response)
 
       company = TwentyfourSevenOffice::DataTypes::Company.new(name: "Test Company")

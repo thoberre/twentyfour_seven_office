@@ -40,7 +40,8 @@ describe TwentyfourSevenOffice::Services::ApiOperation::DataTypeInput do
           Primary: {
             Value: "11 11 11 11"
           }
-        }
+        },
+        Maps: []
       })
     end
 
