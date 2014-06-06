@@ -31,6 +31,7 @@ require "twentyfour_seven_office/services/service"
 require "twentyfour_seven_office/services/authentication"
 require "twentyfour_seven_office/services/company"
 require "twentyfour_seven_office/services/product"
+require "twentyfour_seven_office/services/invoice"
 
 module TwentyfourSevenOffice
   module Errors
