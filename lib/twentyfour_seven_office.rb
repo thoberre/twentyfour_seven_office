@@ -22,6 +22,7 @@ require "twentyfour_seven_office/data_types/invoice_row"
 require "twentyfour_seven_office/data_types/invoice_order"
 require "twentyfour_seven_office/data_types/product_search_parameters"
 require "twentyfour_seven_office/data_types/product"
+require "twentyfour_seven_office/data_types/key_value_pair"
 
 require "twentyfour_seven_office/services/api_operation/input"
 require "twentyfour_seven_office/services/api_operation"
