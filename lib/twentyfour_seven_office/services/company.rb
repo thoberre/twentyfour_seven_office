@@ -12,6 +12,10 @@ module TwentyfourSevenOffice
 
       api_operation :get_statuses
 
+      api_operation :get_categories
+
+      api_operation :get_customer_categories, input_data_types: { customer_id: Integer }
+
       def where(query = {})
         search_params = TwentyfourSevenOffice::DataTypes::CompanySearchParameters.new(query)
         get_companies(search_params: search_params, return_properties: return_props)
@@ -36,6 +40,15 @@ module TwentyfourSevenOffice
         else
           nil
         end
+      end
+
+      def categories_for(company)
+        customer_category_ids = get_customer_categories(customer_id: company.id)
+        customer_category_ids = [customer_category_ids] unless Array.try_convert(customer_category_ids)
+        return customer_category_ids if customer_category_ids.empty?
+
+        categories = get_categories
+        categories.select { |c| customer_category_ids.include?(c.id) }
       end
 
       private

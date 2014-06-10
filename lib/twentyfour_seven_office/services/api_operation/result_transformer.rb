@@ -56,6 +56,8 @@ module TwentyfourSevenOffice
       #
       # Bit of a hack, to be honest.
       def self.rewrite_values_for_array_attributes(output_data_type, data)
+        return data unless output_data_type < TwentyfourSevenOffice::DataTypes::DataType
+
         output_data_type.attribute_set.each do |attr|
           # Should rewrite hash?
           if attr.primitive == Array && data[attr.name]
