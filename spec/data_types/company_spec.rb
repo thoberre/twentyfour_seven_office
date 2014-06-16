@@ -132,6 +132,42 @@ describe TwentyfourSevenOffice::DataTypes::Company do
     end
   end
 
+  describe "#work_email_address" do
+    it "returns nil when there are no email addresses" do
+      company = described_class.new(email_addresses: nil)
+      expect(company.work_email_address).to be_nil
+    end
+
+    it "returns the work email address" do
+      email_addresses = TwentyfourSevenOffice::DataTypes::EmailAddresses.new(
+        work: TwentyfourSevenOffice::DataTypes::EmailAddress.new(
+          value: "test@example.com"
+        )
+      )
+
+      company = described_class.new(email_addresses: email_addresses)
+      expect(company.work_email_address).to eq("test@example.com")
+    end
+  end
+
+  describe "#invoice_email_address" do
+    it "returns nil when there are no email addresses" do
+      company = described_class.new(email_addresses: nil)
+      expect(company.invoice_email_address).to be_nil
+    end
+
+    it "returns the invoice email address" do
+      email_addresses = TwentyfourSevenOffice::DataTypes::EmailAddresses.new(
+        invoice: TwentyfourSevenOffice::DataTypes::EmailAddress.new(
+          value: "test@example.com"
+        )
+      )
+
+      company = described_class.new(email_addresses: email_addresses)
+      expect(company.invoice_email_address).to eq("test@example.com")
+    end
+  end
+
   describe "#postal_address" do
     it "returns nil when there are addresses" do
       company = described_class.new(addresses: nil)

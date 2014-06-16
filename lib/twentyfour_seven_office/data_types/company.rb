@@ -86,6 +86,18 @@ module TwentyfourSevenOffice
         end
       end
 
+      def work_email_address
+        if email_addresses && email_addresses.work
+          email_addresses.work.value
+        end
+      end
+
+      def invoice_email_address
+        if email_addresses && email_addresses.invoice
+          email_addresses.invoice.value
+        end
+      end
+
       def postal_address
         if addresses
           addresses.post
