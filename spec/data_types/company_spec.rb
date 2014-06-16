@@ -96,6 +96,24 @@ describe TwentyfourSevenOffice::DataTypes::Company do
     end
   end
 
+  describe "#work_phone_number" do
+    it "returns nil when there are no phone numbers" do
+      company = described_class.new(phone_numbers: nil)
+      expect(company.work_phone_number).to be_nil
+    end
+
+    it "returns the work phone number" do
+      phone_numbers = TwentyfourSevenOffice::DataTypes::PhoneNumbers.new(
+        work: TwentyfourSevenOffice::DataTypes::PhoneNumber.new(
+          value: "77777766"
+        )
+      )
+
+      company = described_class.new(phone_numbers: phone_numbers)
+      expect(company.work_phone_number).to eq("77777766")
+    end
+  end
+
   describe "#primary_email_address" do
     it "returns nil when there are no email addresses" do
       company = described_class.new(email_addresses: nil)
