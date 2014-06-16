@@ -20,6 +20,12 @@ module TwentyfourSevenOffice
           ApiOperation.new(opts).call(input)
         end
       end
+
+      protected
+
+      def as_array(obj_or_ary)
+        Array.try_convert(obj_or_ary) ? obj_or_ary : [obj_or_ary]
+      end
     end
   end
 end

@@ -11,14 +11,16 @@ module TwentyfourSevenOffice
 
       def where(query = {})
         search_params = TwentyfourSevenOffice::DataTypes::ProductSearchParameters.new(query)
-        get_products(search_params: search_params, return_properties: return_props)
+        products = get_products(search_params: search_params, return_properties: return_props)
+        as_array(products)
       end
 
       def all
         search_params = TwentyfourSevenOffice::DataTypes::ProductSearchParameters.new(
           date_changed: DateTime.new(1970, 1, 1)
         )
-        get_products(search_params: search_params, return_properties: return_props)
+        products = get_products(search_params: search_params, return_properties: return_props)
+        as_array(products)
       end
 
       private

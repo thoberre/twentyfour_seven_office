@@ -18,14 +18,16 @@ module TwentyfourSevenOffice
 
       def where(query = {})
         search_params = TwentyfourSevenOffice::DataTypes::CompanySearchParameters.new(query)
-        get_companies(search_params: search_params, return_properties: return_props)
+        companies = get_companies(search_params: search_params, return_properties: return_props)
+        as_array(companies)
       end
 
       def all
         search_params = TwentyfourSevenOffice::DataTypes::CompanySearchParameters.new(
           changed_after: DateTime.new(1970, 1, 1)
         )
-        get_companies(search_params: search_params, return_properties: return_props)
+        companies = get_companies(search_params: search_params, return_properties: return_props)
+        as_array(companies)
       end
 
       def save(company)
