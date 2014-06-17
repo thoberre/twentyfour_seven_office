@@ -3,7 +3,7 @@ module TwentyfourSevenOffice
     # http://help.24sevenoffice.com/index.php?title=API:CompanyService_DataTypes#Company
     class Company < DataType
       class DistributionMethodString < Virtus::Attribute
-        VALID_VALUES = %w{ Unchanged Print Email ElectronicInvoice }
+        VALID_VALUES = %w{ Unchanged Print EMail ElectronicInvoice }
 
         def coerce(value)
           return if value.nil?

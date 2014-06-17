@@ -11,9 +11,9 @@ describe TwentyfourSevenOffice::DataTypes::Company do
         expect(company.distribution_method).to eq("Unchanged")
       end
 
-      it "accepts the value 'Email'" do
-        company.distribution_method = "Email"
-        expect(company.distribution_method).to eq("Email")
+      it "accepts the value 'EMail'" do
+        company.distribution_method = "EMail"
+        expect(company.distribution_method).to eq("EMail")
       end
 
       it "accepts the value 'Print'" do
