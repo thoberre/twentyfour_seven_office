@@ -5,6 +5,7 @@ require "twentyfour_seven_office/version"
 require "twentyfour_seven_office/utils"
 
 require "twentyfour_seven_office/data_types/data_type"
+require "twentyfour_seven_office/data_types/api_exception"
 require "twentyfour_seven_office/data_types/session_id"
 require "twentyfour_seven_office/data_types/company_search_parameters"
 require "twentyfour_seven_office/data_types/credential"

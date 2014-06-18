@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Body>
+      <SaveCompaniesResponse xmlns="http://24sevenOffice.com/webservices">
+         <SaveCompaniesResult>
+            <Company>
+               <Id>5678</Id>
+               <Name>Test Company</Name>
+               <APIException><Type>Office24Seven.Library.Data.DataBaseServerException</Type><Message>SQL Server with address "192.168.1.67" and Catalog "Kontorplassen" encountered an error with severity level 14 of 25</Message><StackTrace>   at Office24Seven.Library.Data.Command`1.&lt;Execute&gt;d__36.MoveNext()
+               at Office24Seven.Library.Core.Database.SaveQuery`2.ExecuteReader(T scope, Connection connection, IEnumerable`1 parameters)
+               at Office24Seven.Library.Core.Database.SaveQuery`2.ExecuteReader(IIdentifiable scope, Connection connection, IEnumerable`1 parameters)
+               at Office24Seven.Library.Core.Database.Manager.Save(ISaveable scope, Connection connection, IEnumerable`1 properties, IEnumerable`1 parameters)
+               at Office24Seven.Library.Core.Base`4.Save()
+               at Office24Seven.Library.CRM.Company.Properties.&lt;.cctor&gt;b__26a(Company scope, Int32 recordsAffected, Connection connection)
+               at Office24Seven.Library.Core.Database.SaveQuery`2.&lt;&gt;c__DisplayClass1590.&lt;set_OnPostExecuteConnection&gt;b__158e(T scope, Int32 num, IEnumerable`1 parameters, Connection connection)
+               at Office24Seven.Library.Core.Database.SaveQuery`2.ExecuteReader(T scope, Connection connection, IEnumerable`1 parameters)
+               at Office24Seven.Library.Core.Database.SaveQuery`2.ExecuteReader(IIdentifiable scope, Connection connection, IEnumerable`1 parameters)
+               at Office24Seven.Library.Core.Database.Manager.Save(ISaveable scope, Connection connection, IEnumerable`1 properties, IEnumerable`1 parameters)
+               at Office24Seven.Library.Core.Database.Manager.Save(ISaveable scope, ISaveQuery property, IValidate[] parameters)
+               at Office24Seven.Library.Core.Base`4.Save(ISaveQuery property, IValidate[] parameters)
+               at Office24Seven.WebService.CompanyService.CompanyService.SaveCompanies(Company[] companies)</StackTrace></APIException>
+            </Company>
+         </SaveCompaniesResult>
+      </SaveCompaniesResponse>
+   </soap:Body>
+</soap:Envelope>
+

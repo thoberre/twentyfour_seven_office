@@ -18,7 +18,13 @@ module TwentyfourSevenOffice
 
         result = response.body["#{name}_response".to_sym]["#{name}_result".to_sym]
 
-        transform_result(result)
+        transformed = transform_result(result)
+
+        if transformed.respond_to?(:api_exception) && transformed.api_exception
+          raise TwentyfourSevenOffice::Errors::APIError.new(transformed.api_exception.message)
+        end
+
+        transformed
       rescue Savon::SOAPFault => e
         raise TwentyfourSevenOffice::Errors::APIError.wrap(e, opts)
       end

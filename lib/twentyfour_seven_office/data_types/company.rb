@@ -55,6 +55,7 @@ module TwentyfourSevenOffice
       # attribute :relations, Array[Relation]
       attribute :maps, Array[CompanyMap]
       attribute :distribution_method, DistributionMethodString
+      attribute :api_exception, APIException
 
       def primary_phone_number
         if phone_numbers && phone_numbers.primary

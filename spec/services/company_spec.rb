@@ -8,6 +8,7 @@ describe TwentyfourSevenOffice::Services::Company do
 
   let(:get_companies_response) { xml_fixture :get_companies_response }
   let(:save_companies_response) { xml_fixture :save_companies_response }
+  let(:save_companies_error_response) { xml_fixture :save_companies_error_response }
   let(:session_id) { TwentyfourSevenOffice::DataTypes::SessionId.new(session_id: "abcdefgh") }
   let(:changed_after) { DateTime.now }
 
@@ -83,6 +84,17 @@ describe TwentyfourSevenOffice::Services::Company do
       id = c.save(company)
 
       expect(id).to eq(5678)
+    end
+
+    it "raises exception if the result contains an APIException" do
+      savon.expects(:save_companies).with(message: {
+        companies: { Company: [{ Name: "Test Company", Maps: [] }] }
+      }).returns(save_companies_error_response)
+
+      company = TwentyfourSevenOffice::DataTypes::Company.new(name: "Test Company")
+
+      c = TwentyfourSevenOffice::Services::Company.new(session_id)
+      expect { c.save(company) }.to raise_error(TwentyfourSevenOffice::Errors::APIError)
     end
   end
 end
