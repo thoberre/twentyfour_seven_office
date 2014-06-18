@@ -14,6 +14,10 @@ module TwentyfourSevenOffice
         add_inputs(opts, input_hash)
         add_session_cookie(opts)
 
+        if session_id
+          session_id.throttle
+        end
+
         response = client.call(name, opts)
 
         result = response.body["#{name}_response".to_sym]["#{name}_result".to_sym]
