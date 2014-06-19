@@ -38,6 +38,10 @@ module TwentyfourSevenOffice
         company = save_companies(companies: [company])
 
         if company
+          if company.api_exception
+            raise TwentyfourSevenOffice::Errors::APIError.new(company.api_exception.message)
+          end
+
           company.id
         else
           nil

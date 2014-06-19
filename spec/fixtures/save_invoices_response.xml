@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <SaveInvoicesResponse xmlns="http://24sevenOffice.com/webservices">
+            <SaveInvoicesResult>
+                <InvoiceOrder>
+                    <OrderId>698</OrderId>
+                    <CustomerId>119566</CustomerId>
+                    <Addresses>
+                        <Delivery>
+                            <Street>Fortunbakkane 36</Street>
+                            <PostalCode>5229</PostalCode>
+                            <PostalArea>Kalandseidet</PostalArea>
+                            <Name>Kurt Inge Ekanger</Name>
+                        </Delivery>
+                    </Addresses>
+                    <PaymentTime>15</PaymentTime>
+                    <CustomerReferenceNo>142924</CustomerReferenceNo>
+                    <IncludeVAT xsi:nil="true" />
+                    <YourReference>Anne Mette Fotland - FANA SPAREBANK EIENDOM NESTTU</YourReference>
+                    <InvoiceTitle>1140056</InvoiceTitle>
+                    <InvoiceRows>
+                        <InvoiceRow>
+                            <ProductId>1</ProductId>
+                            <Price>739.5</Price>
+                            <Name>Grunnpris standard</Name>
+                            <Quantity>1.0</Quantity>
+                            <ChangeState>Add</ChangeState>
+                        </InvoiceRow>
+                    </InvoiceRows>
+                    <DeliveryDate>0001-01-01T00:00:00</DeliveryDate>
+                </InvoiceOrder>
+            </SaveInvoicesResult>
+        </SaveInvoicesResponse>
+    </soap:Body>
+</soap:Envelope>
