@@ -12,6 +12,7 @@ module TwentyfourSevenOffice
       attribute :date_invoiced, DateTime
       attribute :payment_time, Integer
       attribute :customer_reference_no, String
+      attribute :reference_number, String
       attribute :project_id, Integer
       attribute :our_reference, Integer
       attribute :include_vat, Boolean
