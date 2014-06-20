@@ -59,6 +59,12 @@ module TwentyfourSevenOffice
         categories.select { |c| customer_category_ids.include?(c.id) }
       end
 
+      def has_category?(company, category_id)
+        customer_category_ids = get_customer_categories(customer_id: company.id)
+        customer_category_ids = [customer_category_ids] unless Array.try_convert(customer_category_ids)
+        customer_category_ids.include?(category_id)
+      end
+
       private
 
       def return_props
