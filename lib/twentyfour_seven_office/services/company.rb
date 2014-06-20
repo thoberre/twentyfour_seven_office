@@ -61,6 +61,7 @@ module TwentyfourSevenOffice
 
       # Returns true only if company has all categories
       def has_categories?(company, *category_ids)
+        return false if category_ids.empty?
         customer_category_ids = get_customer_categories(customer_id: company.id)
         customer_category_ids = as_array(customer_category_ids)
         (customer_category_ids & category_ids) == category_ids
