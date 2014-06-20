@@ -14,6 +14,8 @@ module TwentyfourSevenOffice
 
       api_operation :get_categories
 
+      api_operation :get_customer_category_tree
+
       api_operation :get_customer_categories, input_data_types: { customer_id: Integer }
 
       def where(query = {})
