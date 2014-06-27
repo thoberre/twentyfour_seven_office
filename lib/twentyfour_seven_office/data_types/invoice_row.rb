@@ -4,6 +4,7 @@ module TwentyfourSevenOffice
     class InvoiceRow < DataType
       attribute :product_id, Integer
       attribute :row_id, Integer
+      attribute :sequence_number, Integer
       attribute :vat_rate, Float
       attribute :price, Float
       attribute :name, String
