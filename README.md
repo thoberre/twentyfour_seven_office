@@ -2,6 +2,8 @@
 
 TODO: Write a gem description
 
+[![Build Status](https://travis-ci.org/Skalar/twentyfour_seven_office.svg?branch=master)](https://travis-ci.org/Skalar/twentyfour_seven_office)
+
 ## Installation
 
 Add this line to your application's Gemfile:
