@@ -7,4 +7,4 @@ matrix:
   - rvm: ruby-head
 notifications:
   flowdock:
-    secure: Jjtz6uIhYGnu9cAs6+q77ntZcK7IFCroXTvLnLjHTZkyWhjnw5Y5BqLvSqE0u/HUyVR1dSVpkbuEfWLv27bQXJebDGQqQoQD1V3oJVUFu6Cl816DuHENP8KR3Jr63nmSmBV7qq7BvKeWJwbogYe6XJDQb95CdERwGRT5earkGhk=
+    secure: PmauE+PslvpV/v3qtvYZcRIfV7vg0mP9g1Skoq+8WdfdKjloG0wi6kBkKmlI/3vgShQ8G6pLBiJx2WpHK/1YyIf748OYxYduJSXdB0+Od++IAkjl4EWKDqXOZOVf5Fq/y1G1eFNoC4dZh8mvBkBZCoq/Bs8wHdtF8uR3uF18Ulw=
