@@ -1,10 +1,16 @@
 rvm:
-- 2.1.0
-- 2.1.2
-- ruby-head
+  - 1.9.3
+  - 2.0.0
+  - 2.1.0
+  - 2.1.2
+  - ruby-head
+  - jruby-19mode
+  - jruby
+  - jruby-head
 matrix:
   allow_failures:
-  - rvm: ruby-head
+    - rvm: jruby-head
+    - rvm: ruby-head
 notifications:
   flowdock:
     secure: PmauE+PslvpV/v3qtvYZcRIfV7vg0mP9g1Skoq+8WdfdKjloG0wi6kBkKmlI/3vgShQ8G6pLBiJx2WpHK/1YyIf748OYxYduJSXdB0+Od++IAkjl4EWKDqXOZOVf5Fq/y1G1eFNoC4dZh8mvBkBZCoq/Bs8wHdtF8uR3uF18Ulw=
