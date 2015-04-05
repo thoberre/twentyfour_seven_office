@@ -21,6 +21,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 2.14.1"
 
-  spec.add_dependency "savon", "~> 2.3.0"
-  spec.add_dependency "virtus", "~> 1.0.2"
+  spec.add_dependency "savon"
+  spec.add_dependency "virtus"
 end
